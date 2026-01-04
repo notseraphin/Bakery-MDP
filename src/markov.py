@@ -7,7 +7,7 @@ class BakeryMDP:
         """
         Data-driven Markov Decision Process for bakery inventory optimization.
         """
-        # --- Load and standardize CSV ---
+        #  Load and standardize CSV
         self.df = pd.read_csv(csv_path)
         self.df.columns = [c.strip().lower() for c in self.df.columns]  # lowercase columns
         if 'date' not in self.df.columns or 'quantity' not in self.df.columns:
@@ -22,17 +22,17 @@ class BakeryMDP:
         self.order_cost = order_cost
         self.gamma = gamma
 
-        # --- Compute daily total sales ---
+        # Compute daily total sales 
         daily_sales = self.df.groupby('date')['quantity'].sum()
         self.daily_sales = daily_sales.values
         self.max_sales = daily_sales.max()
 
-        # --- Discretize into states ---
+        # Discretize into states 
         self.state_bins = np.linspace(0, self.max_sales, num_states + 1)
         self.sales_states = np.digitize(self.daily_sales, self.state_bins, right=True) - 1
         self.sales_states = np.clip(self.sales_states, 0, num_states - 1)
 
-        # --- Build transition matrix from data ---
+        # Build transition matrix from data 
         self.P = self.build_transition_matrix()
 
     def build_transition_matrix(self):
