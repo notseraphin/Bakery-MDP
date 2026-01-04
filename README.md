@@ -42,17 +42,18 @@ The model is solved using value iteration.
 - Evaluate long-run average daily cost
 
 **Project Structure**
+```bash
 bakery-mdp/
 │── src/
-│   ├── markov.py       # MDP definition and value iteration
-│   ├── analysis.py     # Policy evaluation
+│   ├── markov.py       
+│   ├── analysis.py     
 │── notebooks/
 │   └── experiments.ipynb
 │── data/
 │   └── bakery_sales.csv
 │── README.md
 │── requirements.txt
-
+```
 **Results Interpretation**
 
 - The optimal policy prescribes higher orders on high-demand states and conservative ordering otherwise
