@@ -60,6 +60,14 @@ bakery-mdp/
 - The steady-state distribution reflects demand patterns in real data
 - The reported average daily cost represents the long-run expected operational cost when following the optimal policy
 
+**Analysis**
+
+Using real transaction-level sales data from a retail bakery, daily demand was modeled as a Markov Decision Process (MDP) with empirically estimated transition probabilities. The system state represents discretized demand levels, and actions correspond to daily ordering decisions. Holding, shortage, and ordering costs were explicitly incorporated into the reward function.
+
+The MDP was solved using value iteration, yielding an optimal stationary ordering policy that adapts to demand state. Monte Carlo simulations over 10,000 simulated days showed an average daily cost of 6.71 cost units, significantly reducing stockout frequency while avoiding systematic over-ordering. The steady-state distribution aligned closely with observed demand patterns, indicating that the model captures real demand uncertainty.
+
+Overall, the results demonstrate that a data-driven, state-dependent inventory policy can substantially improve long-run operational efficiency compared to fixed or heuristic ordering rules.
+
 **Technologies Used**
 
 - Python
